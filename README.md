@@ -78,4 +78,4 @@ ORDER BY time_period ASC;
 ### 🎯 Strategic Takeaways & Validation
 
 1. **Acquisition-Driven Expansion:** The 44.4% increase in unique customers served as the primary growth engine, proving that top-line performance was driven by volume expansion.
-2. **Geographic Validation:** Regional trend analysis confirms that entering **4 new international markets in Year 2** directly unlocked this new customer segment, validating the commercial success of the international go-to-market strategy.
+2. **Geographic Validation:** Regional trend analysis confirms that entering **4 new regions with 2 new international markets in Year 2** directly unlocked this new customer segment, validating the commercial success of the international go-to-market strategy.
