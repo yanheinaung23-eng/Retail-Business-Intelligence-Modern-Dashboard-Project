@@ -10,14 +10,24 @@
 
 https://github.com/user-attachments/assets/a8deaa10-849d-4bb0-9a3a-c6e6dc74b3ca
 
+## How to view in interactive mode
+
+> Because this project is hosted on a local environment without Power BI Service web publishing, the online view is static. To experience full dashboard interactivity (filters, drill-downs, cross-highlighting, and custom tooltips), please **download the `.pbix` file** from this repository and open it in **Power BI Desktop**.
+
+
+Download the pbix file [here](https://github.com/yanheinaung23-eng/Retail-Business-Intelligence-Modern-Dashboard-Project/blob/0a6e2352a78eea9449862a2d4c0164ba6309f58e/Market_Report.pbix).
+
+
 ## 🏗️ Data Model Architecture
 
 ![image](https://github.com/yanheinaung23-eng/Retail-Business-Intelligence-Modern-Dashboard-Project/blob/9671d12dd082d29f6c9a7018ab6914cc1ef354dd/Images/data%20model.png)
 
 > **Architecture Overview:** The data model is designed using a **Star Schema** with a normalized **Snowflake extension** (`Regions` $\rightarrow$ `Stores`). Built in Power BI, the schema separates analytical facts from dimensional attributes to optimize query performance, simplify DAX measures, and ensure fast visual responsiveness.
 
-Please view the datasets ![here](https://github.com/yanheinaung23-eng/Retail-Business-Intelligence-Modern-Dashboard-Project/tree/24b46c03c90fb702f1ac2a3552a8aeb004228b01/Datasets).
----
+
+
+Please view the datasets [here](https://github.com/yanheinaung23-eng/Retail-Business-Intelligence-Modern-Dashboard-Project/tree/24b46c03c90fb702f1ac2a3552a8aeb004228b01/Datasets).
+
 
 
 ## Advanced Analysis
