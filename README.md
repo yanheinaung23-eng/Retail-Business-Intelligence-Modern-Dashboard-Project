@@ -16,6 +16,7 @@ https://github.com/user-attachments/assets/a8deaa10-849d-4bb0-9a3a-c6e6dc74b3ca
 
 > **Architecture Overview:** The data model is designed using a **Star Schema** with a normalized **Snowflake extension** (`Regions` $\rightarrow$ `Stores`). Built in Power BI, the schema separates analytical facts from dimensional attributes to optimize query performance, simplify DAX measures, and ensure fast visual responsiveness.
 
+Please view the datasets ![here](https://github.com/yanheinaung23-eng/Retail-Business-Intelligence-Modern-Dashboard-Project/tree/24b46c03c90fb702f1ac2a3552a8aeb004228b01/Datasets).
 ---
 
 
