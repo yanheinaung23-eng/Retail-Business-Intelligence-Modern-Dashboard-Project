@@ -160,4 +160,112 @@ To maximize future revenue growth and optimize marketing/logistics expenditure, 
 * **Priority 2 — Mexico Central ($456 ARPU):** Combines strong unit economics with massive overall revenue contribution ($330K+). Scale infrastructure to capture remaining market share.
 * **Priority 3 — Mexico West ($217 ARPU):** Outperforms legacy domestic averages; ideal target for localized promotions and cross-selling initiatives.
 
+---
+
+## 👥 Customer RFM Segmentation Analysis
+
+![image](https://github.com/yanheinaung23-eng/Retail-Business-Intelligence-Modern-Dashboard-Project/blob/fdf7bc31987a44b959e56c5319036ca9678d2f78/Images/RFM%20scores.png)
+
+> **Overview:** To evaluate customer behavioral loyalty and lifetime value, a custom **Recency, Frequency, and Monetary (RFM)** model was engineered in Power BI using DAX. Customers are scored on a scale from **1 to 5** across each dimension, enabling granular audience segmentation and targeted retention strategies.
+
+---
+
+### 📐 RFM Scoring Methodology
+
+Each customer is evaluated across three core transactional dimensions:
+
+* **Recency (R):** Days elapsed since the customer's last order (*Lower days = Higher engagement = Score 5*).
+* **Frequency (F):** Total number of orders placed over time (*Higher order count = Stronger loyalty = Score 5*).
+* **Monetary (M):** Cumulative lifetime spend (*Higher total revenue = Greater account value = Score 5*).
+
+DAX:
+```dax
+// 1. Calculate Base RFM Table
+Customer RFM = 
+ADDCOLUMNS(
+    VALUES(Customers[customer_id]),
+
+    "Recency",
+    VAR LastPurchase = 
+        CALCULATE(
+            MAX(Transaction_Data[transaction_date])
+        )
+    RETURN
+        DATEDIFF(
+            LastPurchase,
+            [Max date],
+            DAY
+        ),
+    
+    "Frequency",
+        CALCULATE(
+            COUNTROWS(Transaction_Data)
+        ),
+    
+    "Monetary",
+        CALCULATE(
+            SUM(Transaction_Data[Revenue])
+        )
+)
+
+// 2. Score Assignment Logic
+R Score = 
+SWITCH(
+    TRUE(),
+    [Recency] <= 7, 5,
+    [Recency] <= 30, 4,
+    [Recency] <= 90, 3,
+    [Recency] <= 180, 2,
+    1
+)
+
+F Score = 
+SWITCH(
+    TRUE(),
+    [Frequency] >= 40, 5,
+    [Frequency] >= 25, 4,
+    [Frequency] >= 15, 3,
+    [Frequency] >= 8, 2,
+    1
+)
+
+M Score = 
+SWITCH(
+    TRUE(),
+    [Monetary] >= 500, 5,
+    [Monetary] >= 250, 4,
+    [Monetary] >= 120, 3,
+    [Monetary] >= 60, 2,
+    1
+)
+```
+
+#### 🎯 Scoring Threshold Matrix
+
+| Score | Recency (R) | Frequency (F) | Monetary (M) |
+| :---: | :---: | :---: | :---: |
+| **5** | $\le 7$ days | $\ge 40$ orders | $\ge \$500$ |
+| **4** | $\le 30$ days | $\ge 25$ orders | $\ge \$250$ |
+| **3** | $\le 90$ days | $\ge 15$ orders | $\ge \$120$ |
+| **2** | $\le 180$ days | $\ge 8$ orders | $\ge \$60$ |
+| **1** | $> 180$ days | $< 8$ orders | $< \$60$ |
+
+---
+
+### 🧩 Customer Segmentation & Mapping Logic
+
+Using the composite RFM scores, customers are categorized into key strategic tiers for targeted marketing campaigns:
+
+| Segment | RFM Score Pattern | Definition & Business Action |
+| :--- | :---: | :--- |
+| 🏆 **Champions** | `555` | **Highest-value buyers.** Highly active, frequent, and top spenders. Target with VIP rewards & early product access. |
+| 🆕 **New Customers** | `511` | **Recent first-time buyers.** High recency, low transaction count/spend. Target with welcome nurture sequences. |
+| 💎 **Loyal Customers** | `5` `[F ≥ 4]` `[Any M]` | **Consistent repeat buyers.** High recency and high purchase frequency. Focus on cross-selling and loyalty perks. |
+| ⚠️ **At Risk** | `[R ≤ 2]` `[F ≥ 4]` `[Any M]` | **Lapsing high-frequency buyers.** Low recency despite high historical order count. Trigger win-back & discount offers. |
+| ❌ **Lost Customers** | `111` | **Inactive low-value buyers.** Lowest engagement across all metrics. Re-engage via low-cost automated email flows. |
+| ⚙️ **Others** | *All Other Profiles* | **General Customer Base.** Standard promotional and seasonal campaigns. |
+
+---
+
+
 
