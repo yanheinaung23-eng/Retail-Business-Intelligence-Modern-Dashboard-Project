@@ -10,7 +10,16 @@
 
 https://github.com/user-attachments/assets/a8deaa10-849d-4bb0-9a3a-c6e6dc74b3ca
 
-## Advanced Analysis using SQL
+## 🏗️ Data Model Architecture
+
+![image](https://github.com/yanheinaung23-eng/Retail-Business-Intelligence-Modern-Dashboard-Project/blob/9671d12dd082d29f6c9a7018ab6914cc1ef354dd/Images/data%20model.png)
+
+> **Architecture Overview:** The data model is designed using a **Star Schema** with a normalized **Snowflake extension** (`Regions` $\rightarrow$ `Stores`). Built in Power BI, the schema separates analytical facts from dimensional attributes to optimize query performance, simplify DAX measures, and ensure fast visual responsiveness.
+
+---
+
+
+## Advanced Analysis beyond Power BI
 
 ## 📈 1. Sales Jump & Root Cause Analysis
 
@@ -267,5 +276,93 @@ Using the composite RFM scores, customers are categorized into key strategic tie
 
 ---
 
+## 📦 Product ABC Classification & Inventory Analysis
 
+![image](https://github.com/yanheinaung23-eng/Retail-Business-Intelligence-Modern-Dashboard-Project/blob/b0f0a5668cfe6358c405d8c75d701f61313b6b5c/Images/ABC%20Product%20Classification.png)
 
+> **Executive Summary:** Using the **Pareto Principle (80/20 Rule)**, products were categorized into A, B, and C tiers based on cumulative revenue impact. The analysis revealed high revenue fragmentation, with **62.6% of the product catalog categorized under Class A**. This lack of clear "Hero" SKUs ties up working capital and increases operational complexity across inventory management.
+
+---
+
+### 📐 Classification Methodology & Thresholds
+
+Products are ranked from highest to lowest revenue contribution and segmented using cumulative revenue share cutoffs:
+
+| Class | Revenue Share % | Cumulative Cutoff | Operational Meaning | Strategic Focus |
+| :---: | :---: | :---: | :--- | :--- |
+| **Class A** | Top 80% | $\le 80\%$ | High-Impact Drivers | Priority inventory & max availability |
+| **Class B** | Next 15% | $80\% - 95\%$ | Mid-Tier Performers | Standard stock control & monitoring |
+| **Class C** | Next 5% | $> 95\%$ | Long-Tail Items | Minimal holding & potential rationalization |
+
+DAX:
+```dax
+// Product ABC Classification
+ABC Class = 
+SWITCH(
+    TRUE(),
+    [Cumulative Revenue %] <= 0.80, "A",
+    [Cumulative Revenue %] <= 0.95, "B",
+    "C"
+)
+```
+
+---
+
+### 💡 Key Findings
+
+1. **No Clear "Hero" Products (Catalog Fragmentation):** Class A revenue is distributed across **62.6%** of the product catalog. Rather than having a concentrated set of top-performing flagship SKUs, revenue is spread thinly across a broad range of brands (e.g., *Hermanos*, *Tell Tale*, *Ebony*, *Tri-State*).
+2. **Operational & Cash Flow Strain:** Treating **62.2%–62.6%** of total inventory with Class A priority creates significant supply chain overhead, inflates carrying costs, and locks up critical working capital in holding stock.
+3. **Margin Masking Risk:** Classifying SKUs solely by gross revenue hides profitability differences; low-margin items that generate high volume are currently receiving the same replenishment priority as high-margin items.
+
+---
+
+### 🎯 Strategic Recommendations
+
+* **1. Margin-Based Optimization:** Cross-analyze Class A items against net profit margins to identify true high-margin revenue drivers and elevate them into flagship "Hero" product status.
+* **2. Marketing & Visual Placement:** Direct marketing expenditure and prime digital storefront placement toward high-margin Class A products to accelerate their volume velocity.
+* **3. Inventory Policy Realignment:** Reclassify lower-margin Class A items into tighter reorder schedules to reduce holding costs and optimize cash flow efficiency.
+
+---
+
+## 📌 Conclusion & Executive Summary
+
+> **Macro Takeaway:** This end-to-end Business Intelligence project demonstrates how combining **SQL metric decomposition**, **DAX-driven RFM modeling**, and **Pareto inventory classification** transforms raw transactional data into high-value commercial strategy. The analysis proves that while top-line revenue doubled (**+112.2% YoY**), future sustainable profitability depends on prioritizing high-ARPU international markets and rationalizing product inventory.
+
+---
+
+### 🔑 Summary of Core Insights
+
+1. **Acquisition & International Expansion Drove Revenue Doubling:**  
+   The primary catalyst behind the **+112.2% revenue surge** (growing from **$565K to $1.2M**) was a **+44.4% expansion in active customers**, directly unlocked by entering 4 new regions in Year 2.
+
+2. **Mexico Represents an Exceptional Growth Opportunity:**  
+   The regional analysis highlights a significant yield disparity: despite representing only **14% of the customer base**, the Mexico markets generated **~$479K (~40% of total company revenue)**. Customers in **Mexico South ($890 ARPU)** yield **5.7x to 12.8x more revenue** than legacy domestic accounts.
+
+3. **Inventory Management Requires Profitability Alignment:**  
+   While top-line growth is strong, product portfolio analysis reveals that **62.6% of the catalog falls into Class A**. Treating over six out of ten SKUs as high-priority drivers creates supply chain strain and ties up working capital in low-margin inventory.
+
+---
+
+### 🎯 Consolidated Strategic Action Plan
+
+| Pillar | Strategic Goal | Operational Action | Expected Business Outcome |
+| :--- | :--- | :--- | :--- |
+| **1. Geographic Growth** | Capitalize on High-ARPU Markets | Reallocate marketing capital to **Mexico South** and **Mexico Central**. | Higher ROI per customer acquisition dollar and elevated total account value. |
+| **2. Customer Retention** | Protect & Nurture High Tiers | Deploy automated email/VIP nurture sequences for **Champions (`555`)** and win-back flows for **At Risk (`R≤2, F≥4`)** accounts. | Higher customer lifetime value (LTV) and increased purchase frequency. |
+| **3. Catalog Rationalization** | Eliminate Inventory Bottlenecks | Cross-reference Class A products against net profit margins; prioritize high-margin "Hero" SKUs for prime digital placement. | Optimized cash flow, reduced holding costs, and improved profit margins. |
+
+---
+
+### 🛠️ Technical Capabilities Demonstrated
+
+* **Data Architecture:** Designed a scalable **Star Schema** with a **Snowflake extension** (`Regions` $\rightarrow$ `Stores`) in Power BI.
+* **Advanced Analytics:** Applied **SQL driver decomposition** ($\text{Revenue} = \text{Customers} \times \text{Frequency} \times \text{AOV}$) to quantify growth catalysts.
+* **Custom DAX Modeling:** Engineered dynamic **RFM scoring** algorithms and cumulative revenue **Pareto classification (80/20 Rule)**.
+* **Executive Visualization:** Built an interactive **5-page Power BI reporting suite** tailored for executive decision-making.
+
+---
+### 👨‍💻 Author
+
+Yan Hein Aung
+
+⭐ If you found this project helpful, feel free to star the repository!
