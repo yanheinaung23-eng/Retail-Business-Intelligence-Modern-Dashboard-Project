@@ -79,3 +79,85 @@ ORDER BY time_period ASC;
 
 1. **Acquisition-Driven Expansion:** The 44.4% increase in unique customers served as the primary growth engine, proving that top-line performance was driven by volume expansion.
 2. **Geographic Validation:** Regional trend analysis confirms that entering **4 new regions with 2 new international markets in Year 2** directly unlocked this new customer segment, validating the commercial success of the international go-to-market strategy.
+
+---
+
+## 🌎 Regional Performance & High-Value Market Analysis
+
+![image](https://github.com/yanheinaung23-eng/Retail-Business-Intelligence-Modern-Dashboard-Project/blob/fe3543d96ae720f1077054ca798ffd4de0954428/Images/Revenue%20Trend%20by%20Sales%20Regions.png)
+
+> **Executive Summary:** While representing only **14% of the total customer base**, the newly entered **Mexico regions** generate an exceptionally high Average Revenue Per Customer (ARPU) compared to legacy domestic markets. Combined with top-tier customer RFM scores, these markets demonstrate strong organic demand and represent the highest ROI opportunity for strategic expansion.
+
+---
+
+### 📐 Calculation Methodology
+To evaluate customer quality and regional spending power (rather than raw transaction volume), Average Revenue Per Customer was calculated using:
+
+$$\text{Avg. Revenue Per Customer} = \frac{\text{Total Sales Revenue}}{\text{Total Unique Customers}}$$
+
+SQL code:
+```sql
+WITH region_customers AS (
+SELECT 
+	r.sales_region,
+	ROUND(SUM(CASE WHEN t.transaction_date BETWEEN '1997-01-01' AND '1997-12-31' THEN t.quantity * p.product_retail_price ELSE 0 END)) AS sales_1997,
+	ROUND(SUM(CASE WHEN t.transaction_date BETWEEN '1998-01-01' AND '1998-12-30' THEN t.quantity * p.product_retail_price ELSE 0 END)) AS sales_1998,
+	COUNT(DISTINCT CASE
+            WHEN t.transaction_date BETWEEN '1997-01-01' AND '1997-12-31'
+            THEN t.customer_id
+        END
+    ) AS total_customers_1997,
+	COUNT(DISTINCT CASE
+			WHEN t.transaction_date BETWEEN '1998-01-01' AND '1998-12-30'
+			THEN t.customer_id
+		END
+	) AS total_customers_1998
+FROM transactions t
+LEFT JOIN products p
+	ON t.product_id = p.product_id
+JOIN stores s
+	ON t.store_id = s.store_id
+JOIN regions r
+	ON s.region_id = r.region_id
+GROUP BY 1
+)
+SELECT *,
+	ROUND(sales_1997 / total_customers_1997) AS avg_revenue_per_customer_1997,
+	ROUND(sales_1998 / total_customers_1997) AS avg_revenue_per_customer_1998
+FROM region_customers
+ORDER BY sales 1
+```
+
+---
+
+### Result
+
+| Sales Region | 1997 Sales | 1998 Sales | 1997 Cust. | 1998 Cust. | 1997 ARPU | 1998 ARPU | Commercial Tier |
+| :--- | :---: | :---: | :---: | :---: | :---: | :---: | :--- |
+| **Mexico South** | $0 | $87,241 | 0 | 98 | — | **$890** | 🔥 Highest Value per Customer |
+| **Mexico Central** | $0 | $330,331 | 0 | 724 | — | **$456** | ⚡ Top Volume & Value Driver |
+| **Mexico West** | $0 | $61,300 | 0 | 283 | — | **$217** | 📈 Strong Growth Potential |
+| **North West** | $406,065 | $441,756 | 2,865 | 2,874 | $142 | **$154** | 🛡️ Legacy Baseline (Stable) |
+| **Canada West** | $0 | $107,674 | 0 | 1,380 | — | **$78** | 👥 High Volume / Low ARPU |
+| **South West** | $154,727 | $166,076 | 2,420 | 2,420 | $64 | **$69** | 🛡️ Legacy Baseline (Moderate) |
+| **Central West** | $4,441 | $4,884 | 296 | 281 | $15 | **$17** | ⚠️ Low Yield |
+
+---
+
+### 💡 Key Findings
+
+1. **Disproportionate Value Capture in Mexico:** Despite accounting for only **~14% of overall active customers** in 1998 (1,105 of 8,060), the three Mexico regions generated **$478,872** (~40% of total company revenue).
+2. **RFM Score Validation:** Customer RFM metrics in the Mexican markets are among the highest in the entire database, confirming that the elevated ARPU is backed by real, high-intent purchasing behavior and high repeat customer value rather than one-off anomalies.
+3. **ARPU Disparity:** Customers in **Mexico South ($890 ARPU)** yield **5.7x more revenue per account** than established core markets like the *North West ($154 ARPU)* and **12.8x more** than *South West ($69 ARPU)*.
+
+---
+
+### 🎯 Strategic Recommendations: Regional Expansion Roadmap
+
+To maximize future revenue growth and optimize marketing/logistics expenditure, expansion capital should be allocated in the following priority order:
+
+* **Priority 1 — Mexico South ($890 ARPU):** Maximum capitalization efficiency. Focus targeted digital campaigns and localized sales pipelines here to expand user acquisition.
+* **Priority 2 — Mexico Central ($456 ARPU):** Combines strong unit economics with massive overall revenue contribution ($330K+). Scale infrastructure to capture remaining market share.
+* **Priority 3 — Mexico West ($217 ARPU):** Outperforms legacy domestic averages; ideal target for localized promotions and cross-selling initiatives.
+
+
