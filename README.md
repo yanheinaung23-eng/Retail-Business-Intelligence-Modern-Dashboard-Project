@@ -19,7 +19,7 @@ https://github.com/user-attachments/assets/a8deaa10-849d-4bb0-9a3a-c6e6dc74b3ca
 ---
 
 
-## Advanced Analysis beyond Power BI
+## Advanced Analysis
 
 ## 📈 1. Sales Jump & Root Cause Analysis
 
