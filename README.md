@@ -29,7 +29,7 @@ $$\text{Revenue} = \text{Unique Customers} \times \text{Purchase Frequency} \tim
 | :--- | :--- | :--- | :--- | :--- |
 | **Avg. Monthly Revenue** | ~$50,000 | ~$100,000 | **+112.2%** | Revenue doubled year-over-year. |
 | **Unique Customers** | Baseline | +44.4% | **+44.4%** | Primary growth catalyst (Customer Acquisition). |
-| **Geographic Footprint** | Domestic Focus | +4 New Regions | **+4 International** | Validates market entry as the volume driver. |
+| **Geographic Footprint** | Domestic Focus | +4 New Regions | **+2 International** | Validates market entry as the volume driver. |
 
 ---
 
