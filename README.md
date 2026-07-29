@@ -61,15 +61,21 @@ ORDER BY time_period ASC;
 
 ### 💡 Key Findings
 
-| Metric | Year 1 | Year 2 | YoY Growth | Key Insight |
-| :--- | :--- | :--- | :--- | :--- |
-| **Avg. Monthly Revenue** | ~$50,000 | ~$100,000 | **+112.2%** | Revenue doubled year-over-year. |
-| **Unique Customers** | Baseline | +44.4% | **+44.4%** | Primary growth catalyst (Customer Acquisition). |
-| **Geographic Footprint** | Domestic Focus | +4 New Regions | **+2 International** | Validates market entry as the volume driver. |
+**1. Strong Customers Acquisition (+44.4%)**
+
+- The customer base expanded significantly from 5,581 to 8,060 active customers. This shows strong marketing momentum and market expansion.
+
+**2. Improved Customer Retention & Habit (+33.3%)**
+
+- Average purchase frequency increased from ~3 to ~4 orders per customer per year. Existing customers are coming back more often, indicating stronger product-market fit.
+
+**3. Average Order Value Growth (+14.3%)**
+
+- While still positive, AOV showed the slowest growth among all drivers (+14.3%). Customers are buying more often.
 
 ---
 
 ### 🎯 Strategic Takeaways & Validation
 
-1. **Acquisition-Driven Expansion:** The 44.4% increase in unique customers served as the primary growth engine, proving that top-line performance was driven by volume expansion rather than price increases (AOV) or repeat purchase behavior.
+1. **Acquisition-Driven Expansion:** The 44.4% increase in unique customers served as the primary growth engine, proving that top-line performance was driven by volume expansion.
 2. **Geographic Validation:** Regional trend analysis confirms that entering **4 new international markets in Year 2** directly unlocked this new customer segment, validating the commercial success of the international go-to-market strategy.
