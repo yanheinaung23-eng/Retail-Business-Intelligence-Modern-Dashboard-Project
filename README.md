@@ -1,10 +1,26 @@
 # Retail Business Intelligence Modern Dashboard Project
 
-> A modern, interactive **5-page Power BI dashboard** designed to analyze retail sales, customers, products, regions, and returns. This project demonstrates advanced Power BI development, data modeling, DAX calculations, RFM customer segmentation, and business intelligence storytelling.
+> An Award-winning modern, interactive **5-page Power BI dashboard** designed to analyze retail sales, customers, products, regions, and returns. This project demonstrates advanced Power BI development, data modeling, DAX calculations, RFM customer segmentation, and business intelligence storytelling.
 
 ---
 
 ![image](https://github.com/yanheinaung23-eng/Retail-Business-Intelligence-Modern-Dashboard-Project/blob/e17238fc83d32bff2d8809d529ced19d6db39757/Images/RETAIL%20BUSINESS%20INTELLIGENCE%20DASHBOARD%20PORTFOLIO.png)
+
+## 🏆 Awards & Achievements
+
+### 🥇 1st Place winner
+This project is awarded **1st Place** in Final Presentation of **Professional Diploma in Business Intelligence & Data Analytics** at Matrix College! 🎉
+
+My Diploma Certificate in BI & DA - [Certificate](https://www.matrixcollege.edu.mm/view/msp1100-2026).
+
+Learn more about my School Here - [Matrix College](https://www.matrixcollege.edu.mm/).
+
+---
+
+![Alt image](https://github.com/yanheinaung23-eng/Retail-Business-Intelligence-Modern-Dashboard-Project/blob/e96bf4d633ddcbb77cd729135f28908a04fa5356/Images/Awardwinning_photo.jpg)
+
+---
+
 
 ## 📷 Video Overview
 
